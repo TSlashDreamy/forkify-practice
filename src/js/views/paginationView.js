@@ -41,19 +41,29 @@ export class PaginationView extends View {
             </svg>
         </button>`;
 
+    const currentPositionIndicator = `
+        <span class="pagination__current ${
+          curPage === 1
+            ? 'pagination__first'
+            : curPage === numPages
+            ? 'pagination__last'
+            : ''
+        }">${curPage === numPages && curPage === 1 ? 'There are only 1 page' : `Current page: ${curPage}/${numPages}`}</span>
+    `;
+
     if (curPage === 1 && numPages > 1) {
-      return nextButton;
+      return currentPositionIndicator + nextButton;
     }
 
     if (curPage === numPages && numPages > 1) {
-      return prevButton;
+      return prevButton + currentPositionIndicator;
     }
 
     if (curPage < numPages) {
-      return prevButton + nextButton;
+      return prevButton + currentPositionIndicator + nextButton;
     }
 
-    return '';
+    return currentPositionIndicator;
   }
 }
 

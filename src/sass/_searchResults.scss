@@ -12,6 +12,7 @@
 .pagination {
   margin-top: auto;
   padding: 0 3.5rem;
+  display: flex;
 
   &::after {
     content: '';
@@ -27,6 +28,24 @@
       float: right;
     }
   }
+
+  &__current {
+    margin: auto;
+    color: #f2efee;
+    background-color: #f48982;
+    padding: 7px;
+    border-radius: 15px;
+    font-weight: 600;
+    user-select: none;
+  }
+
+  &__first {
+    margin-left: 0;
+  }
+
+  &__last {
+    margin-right: 0;
+  }
 }
 
 .copyright {
@@ -39,4 +58,16 @@
   .twitter-link:visited {
     color: $color-grey-dark-2;
   }
+}
+
+.remark {
+  color: $color-grey-dark-2;
+  font-size: 1.2rem;
+  padding: 0 3.5rem;
+  margin-top: 10px;
+
+  .github_link:link,
+  .github_link:visited {
+  color: $color-primary;
+}
 }
