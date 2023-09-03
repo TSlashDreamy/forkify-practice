@@ -1,18 +1,23 @@
 import { View } from './View';
 
 export class ResultsView extends View {
-    _parentElement = document.querySelector('.results');
-    _errorMessage = 'We could not find results for your query. Please, try another one.';
-    _message = '';
+  _parentElement = document.querySelector('.results');
+  _errorMessage =
+    'We could not find results for your query. Please, try another one.';
+  _message = '';
 
-    _generateMarkup() {
-       return this._data.map(this.#generateMarkupPreview).join("");
-    }
-    
-    #generateMarkupPreview(result) {
-        return `
+  _generateMarkup() {
+    return this._data.map(this.#generateMarkupPreview).join('');
+  }
+
+  #generateMarkupPreview(result) {
+    const id = window.location.hash.slice(1);
+
+    return `
         <li class="preview">
-            <a class="preview__link preview__link--active" href="#${result.id}">
+            <a class="preview__link ${
+              id === result.id ? 'preview__link--active' : ''
+            }" href="#${result.id}">
             <figure class="preview__fig">
                 <img src="${result.image}" alt="${result.title}" />
             </figure>
@@ -22,8 +27,8 @@ export class ResultsView extends View {
             </div>
             </a>
         </li>
-    `
-    }
+    `;
+  }
 }
 
 export default new ResultsView();
